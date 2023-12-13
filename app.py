@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
-
+import pickle
 
 # Set page config
 st.set_page_config(page_title='Loan Eligibility Prediction System', page_icon=':bank:', layout='wide')
 
 # Load the model
-model = joblib.load('Final.pkl')  # Replace 'model.pkl' with your actual model filename
+#model = joblib.load('Final.pkl')  # Replace 'model.pkl' with your actual model filename
+with open('Final.pkl', 'rb') as file:  # Replace 'Final.pkl' with your actual model filename
+    model = pickle.load(file)
 
 def preprocess_input(data):
     df = pd.DataFrame(data, index=[0])
